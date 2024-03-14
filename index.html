@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cup Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+        /* FORMATTING */
+        .container {
+            text-align: center;
+            font-family: "Pixelify Sans", sans-serif;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #refresh {
+            display: none;
+            margin-top: 30px;
+            font-family: "Pixelify Sans", sans-serif;
+            background-color: transparent;
+            border: 1px solid;
+        }
+
+        .cups-div{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cups-div img {
+            width: 100px;
+        }
+
+        .cups-div div{
+            margin: 20px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes shuffle1 {
+            0% {transform: translateX(0);}
+            50% {transform: translateX(145%);}
+            100% {transform: translateX(0);}
+        }
+
+        @keyframes shuffle2 {
+            0% {transform: translateX(0);}
+            50% {transform: translateX(-145%);}
+            100% {transform: translateX(0);}
+        }
+
+        .animated-cup1 {
+            animation: shuffle1 1s ease-in-out;
+        }
+
+        .animated-cup2 {
+            animation: shuffle2 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CUP GAME!</h1>
+    <div class="cups-div">
+        <div id="cup1"><img onclick="cupClicked(this)" class="animated-cup1" src="assets/cup.png"/></div>
+        <div id="cup2"><img onclick="cupClicked(this)" src="assets/cup.png"/></div>
+        <div id="cup3"><img onclick="cupClicked(this)" class="animated-cup2" src="assets/cup.png"/></div>
+    </div>
+    <button id="refresh" onClick="refreshPage()"></button>
+</div>
+
+<script>
+
+    var chosenCupDiv;
+    var ball;
+
+    window.onload = function() {
+        var chosenCup = Math.floor(Math.random() * 3) + 1;
+        chosenCupDiv = document.getElementById('cup' + chosenCup);
+        ball = document.createElement('img');
+    }
+
+    function cupClicked(element) {
+        ball.src = "assets/ball.png";
+        ball.style.position = "absolute";
+        ball.style.width = "30px";
+        ball.style.transform = "translate(-200%, 300%)";
+        ball.style.zIndex = -10;
+        chosenCupDiv.appendChild(ball);
+
+        element.style.transform = "translateY(-30%)";
+
+        let refresh = document.getElementById('refresh');
+        refresh.innerText = 'CLICK TO PLAY AGAIN';
+        refresh.style.display = "block";
+    }
+
+    function refreshPage() {
+        window.location.reload();
+    }
+
+</script>
+</body>
+</html>
+
+

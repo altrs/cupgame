@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+/* FORMATTING */
+.container {
+    text-align: center;
+    font-family: "Pixelify Sans", sans-serif;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#refresh {
+    display: none;
+    margin-top: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.cups-div{
+    display: flex;
+    flex-direction: row;
+}
+
+.cups-div img {
+    width: 100px;
+}
+
+.cups-div div{
+    margin: 20px;
+}
+
+/* ANIMATIONS */
+@keyframes shuffle1 {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(145%);}
+    100% {transform: translateX(0);}
+}
+
+@keyframes shuffle2 {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(-145%);}
+    100% {transform: translateX(0);}
+}
+
+.animated-cup1 {
+    animation: shuffle1 1s ease-in-out;
+}
+
+.animated-cup2 {
+    animation: shuffle2 1s ease-in-out;
+}
